@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>My Dashboard &mdash; Sudha Wellness</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="auth.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+</head>
+<body class="dashboard-body">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="LOGO SW.jpeg" alt="Sudha Wellness" class="nav-logo-img"/>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#register">Register Webinar</a></li>
+      <li>
+        <div class="user-menu" id="userMenuNav">
+          <button class="user-avatar-btn" onclick="toggleUserMenu()" aria-label="Account">
+            <span class="user-avatar-small" id="navAvatar">U</span>
+            <span id="navUserName">User</span>
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor" style="margin-left:2px"><path d="M1 3l4 4 4-4"/></svg>
+          </button>
+          <div class="user-dropdown" id="userDropdown" style="display:none;">
+            <a href="dashboard.html">&#128203; Dashboard</a>
+            <a href="dashboard.html?tab=bookings">&#127915; My Bookings</a>
+            <a href="dashboard.html?tab=profile">&#128100; My Profile</a>
+            <hr/>
+            <a href="#" onclick="logout();return false;" class="logout-link">&#128682; Logout</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- DASHBOARD LAYOUT -->
+<div class="dashboard-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="dashboard-sidebar">
+    <div class="sidebar-user" id="sidebarUser">
+      <div class="sidebar-avatar" id="sidebarAvatar">U</div>
+      <div>
+        <div class="sidebar-name" id="sidebarName">Loading...</div>
+        <div class="sidebar-email" id="sidebarEmail">...</div>
+        <span class="sidebar-badge" id="sidebarBadge">FREE Member</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-tab="overview" onclick="return changeTab('overview',this)">
+        <span>&#127968;</span> Dashboard
+      </a>
+      <a href="#" class="sidebar-link" data-tab="bookings" onclick="return changeTab('bookings',this)">
+        <span>&#127915;</span> My Bookings
+        <span class="sidebar-count" id="bookingCount"></span>
+      </a>
+      <a href="#" class="sidebar-link" data-tab="profile" onclick="return changeTab('profile',this)">
+        <span>&#128100;</span> My Profile
+      </a>
+      <a href="#" class="sidebar-link" data-tab="payments" onclick="return changeTab('payments',this)">
+        <span>&#128179;</span> Payments
+      </a>
+      <a href="#" class="sidebar-link" data-tab="resources" onclick="return changeTab('resources',this)">
+        <span>&#127873;</span> Resources
+      </a>
+      <hr class="sidebar-divider"/>
+      <a href="index.html#register" class="sidebar-link sidebar-cta">
+        <span>&#43;</span> Register Webinar
+      </a>
+      <a href="#" class="sidebar-link" onclick="logout();return false;">
+        <span>&#128682;</span> Logout
+      </a>
+    </nav>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dashboard-content">
+    <div id="dashToast" class="dash-toast" aria-live="polite"></div>
+
+    <!-- ===== OVERVIEW ===== -->
+    <div class="tab-panel active" id="tab-overview">
+      <div class="dash-header">
+        <div>
+          <h1 id="welcomeHeading">Welcome back! &#128075;</h1>
+          <p class="dash-subtext">Here&rsquo;s your wellness dashboard</p>
+        </div>
+        <a href="index.html#register" class="btn-hero-primary" style="font-size:.84rem;padding:10px 22px;">&#43; Register Webinar</a>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:#eaf5ef;color:#1a6b45;">&#127915;</div>
+          <div><div class="stat-card-num" id="statsTotal">0</div><div class="stat-card-label">Total Registrations</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:#fef3c7;color:#d97706;">&#128308;</div>
+          <div><div class="stat-card-num" id="statsUpcoming">0</div><div class="stat-card-label">Upcoming</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:#faf5ff;color:#7c3aed;">&#11088;</div>
+          <div><div class="stat-card-num" id="statsVIP">0</div><div class="stat-card-label">VIP Registrations</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-card-icon" style="background:#eff6ff;color:#2563eb;">&#128179;</div>
+          <div><div class="stat-card-num" id="statsSpent">&#8377;0</div><div class="stat-card-label">Total Spent</div></div>
+        </div>
+      </div>
+
+      <div class="upcoming-webinar-card">
+        <div class="upcoming-left">
+          <div class="upcoming-badge">&#128308; UPCOMING</div>
+          <h3>Holistic Wellness &mdash; Live Webinar</h3>
+          <div class="upcoming-meta">
+            <span>&#128197; Thursday, 20 August 2026</span>
+            <span>&#9200; 6:00 PM &ndash; 8:00 PM IST</span>
+            <span>&#128187; Zoom</span>
+          </div>
+          <div class="upcoming-actions">
+            <button class="btn-zoom" onclick="copyZoomLink()">&#128279; Copy Zoom Link</button>
+            <button class="btn-whatsapp" onclick="resendWhatsApp()">&#128241; Resend to WhatsApp</button>
+          </div>
+        </div>
+        <div class="upcoming-countdown" id="dashCountdown">
+          <p>Starts in</p>
+          <div class="mini-countdown">
+            <div><span id="dc-days">00</span><small>D</small></div>
+            <div><span id="dc-hours">00</span><small>H</small></div>
+            <div><span id="dc-mins">00</span><small>M</small></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-card-header">
+          <h3>Recent Registrations</h3>
+          <a href="#" onclick="return changeTab('bookings')">View all &rarr;</a>
+        </div>
+        <div id="recentRegistrations">
+          <div class="empty-state">
+            <div class="empty-icon">&#127915;</div>
+            <p>No registrations yet.</p>
+            <a href="index.html#register" class="btn-hero-primary" style="font-size:.84rem;padding:10px 22px;">Register Free</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BOOKINGS ===== -->
+    <div class="tab-panel" id="tab-bookings">
+      <div class="dash-header">
+        <div><h1>My Bookings &#127915;</h1><p class="dash-subtext">All your webinar registrations</p></div>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterBookings('all',this)">All</button>
+        <button class="filter-btn" onclick="filterBookings('upcoming',this)">Upcoming</button>
+        <button class="filter-btn" onclick="filterBookings('completed',this)">Completed</button>
+        <button class="filter-btn" onclick="filterBookings('vip',this)">VIP Only</button>
+      </div>
+      <div id="bookingsList" class="bookings-list"></div>
+    </div>
+
+    <!-- ===== PROFILE ===== -->
+    <div class="tab-panel" id="tab-profile">
+      <div class="dash-header">
+        <div><h1>My Profile &#128100;</h1><p class="dash-subtext">Manage your account details</p></div>
+      </div>
+      <div class="profile-layout">
+        <div class="profile-avatar-section">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <div class="profile-name-big" id="profileNameBig">&mdash;</div>
+          <div class="profile-member-since" id="profileMemberSince">Member since &mdash;</div>
+          <div class="profile-badge-big" id="profileBadgeBig">FREE Member</div>
+        </div>
+        <div>
+          <div class="section-card">
+            <div class="section-card-header"><h3>Personal Information</h3></div>
+            <form id="profileForm" onsubmit="saveProfile(event)">
+              <div class="form-row">
+                <div class="form-group"><label>First Name</label><input type="text" id="pfFirstName"/></div>
+                <div class="form-group"><label>Last Name</label><input type="text" id="pfLastName"/></div>
+              </div>
+              <div class="form-group"><label>Email</label><input type="email" id="pfEmail" readonly class="input-readonly"/></div>
+              <div class="form-group">
+                <label>WhatsApp Number</label>
+                <div class="phone-input">
+                  <span class="country-code">+91</span>
+                  <input type="tel" id="pfPhone" pattern="[0-9]{10}" maxlength="10"/>
+                </div>
+              </div>
+              <div class="form-group"><label>City</label><input type="text" id="pfCity"/></div>
+              <div class="form-group">
+                <label>Primary Health Goal</label>
+                <select id="pfGoal">
+                  <option value="">Select goal</option>
+                  <option value="weight">Weight Management</option>
+                  <option value="stress">Stress &amp; Anxiety</option>
+                  <option value="gut">Gut Health</option>
+                  <option value="energy">Low Energy</option>
+                  <option value="sleep">Sleep Problems</option>
+                  <option value="general">General Wellness</option>
+                </select>
+              </div>
+              <div class="profile-actions">
+                <button type="submit" class="btn-hero-primary" style="font-size:.88rem;padding:11px 26px;">Save Changes</button>
+                <span class="profile-save-msg" id="profileSaveMsg" style="display:none;">&#9989; Saved!</span>
+              </div>
+            </form>
+          </div>
+          <div class="section-card" style="margin-top:18px;">
+            <div class="section-card-header"><h3>Change Password</h3></div>
+            <form id="passwordForm" onsubmit="changePassword(event)">
+              <div class="form-group">
+                <label>Current Password</label>
+                <div class="input-icon-wrap">
+                  <span class="input-icon">&#128274;</span>
+                  <input type="password" id="currPassword" placeholder="Current password"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('currPassword',this)">&#128065;</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>New Password</label>
+                <div class="input-icon-wrap">
+                  <span class="input-icon">&#128274;</span>
+                  <input type="password" id="newPassword" placeholder="Min. 8 characters"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('newPassword',this)">&#128065;</button>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Confirm New Password</label>
+                <div class="input-icon-wrap">
+                  <span class="input-icon">&#128274;</span>
+                  <input type="password" id="confirmNewPassword" placeholder="Re-enter password"/>
+                  <button type="button" class="toggle-pass" onclick="togglePassword('confirmNewPassword',this)">&#128065;</button>
+                </div>
+              </div>
+              <button type="submit" class="btn-hero-primary" style="font-size:.88rem;padding:11px 26px;">Update Password</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== PAYMENTS ===== -->
+    <div class="tab-panel" id="tab-payments">
+      <div class="dash-header">
+        <div><h1>Payment History &#128179;</h1><p class="dash-subtext">All your transactions</p></div>
+      </div>
+      <div class="payments-summary">
+        <div class="pay-summary-item"><span>Total Spent</span><strong id="payTotal">&#8377;0</strong></div>
+        <div class="pay-summary-item"><span>Transactions</span><strong id="payCount">0</strong></div>
+        <div class="pay-summary-item"><span>Last Payment</span><strong id="payLast">&mdash;</strong></div>
+      </div>
+      <div class="section-card"><div id="paymentsList"></div></div>
+    </div>
+
+    <!-- ===== RESOURCES ===== -->
+    <div class="tab-panel" id="tab-resources">
+      <div class="dash-header">
+        <div><h1>My Resources &#127873;</h1><p class="dash-subtext">Exclusive content for registered participants</p></div>
+      </div>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon">&#128215;</div>
+          <h4>Wellness Workbook</h4>
+          <p>7-day action plan for holistic health transformation</p>
+          <button class="btn-download" onclick="downloadResource('workbook')">&#8595; Download PDF</button>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon">&#129367;</div>
+          <h4>7-Day Detox Meal Plan</h4>
+          <p>Ayurvedic meal plan to cleanse and reset your body</p>
+          <button class="btn-download" onclick="downloadResource('mealplan')">&#8595; Download PDF</button>
+        </div>
+        <div class="resource-card resource-vip">
+          <div class="resource-vip-tag">&#11088; VIP</div>
+          <div class="resource-icon">&#127916;</div>
+          <h4>Webinar Recording</h4>
+          <p>Full session recording &mdash; available 24hrs after the webinar</p>
+          <button class="btn-download vip-locked" data-type="recording" onclick="checkVIPAccess('recording')">&#128274; VIP Only</button>
+        </div>
+        <div class="resource-card resource-vip">
+          <div class="resource-vip-tag">&#11088; VIP</div>
+          <div class="resource-icon">&#128203;</div>
+          <h4>Personalised Diet Template</h4>
+          <p>Customisable diet chart based on your Prakriti</p>
+          <button class="btn-download vip-locked" data-type="diet" onclick="checkVIPAccess('diet')">&#128274; VIP Only</button>
+        </div>
+      </div>
+      <div class="vip-upgrade-banner" id="vipBanner" style="display:none;">
+        <div class="vip-banner-text">
+          <strong>&#11088; Upgrade to VIP</strong>
+          <p>Get recording access, personalised plans &amp; priority Q&amp;A for just &#8377;499</p>
+        </div>
+        <a href="index.html#register" class="btn-hero-primary" style="font-size:.84rem;padding:11px 22px;white-space:nowrap;">Upgrade Now</a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-bottom" style="padding:16px 0;">
+    <div class="container fb-inner">
+      <p>&copy; 2025 Sudha Wellness. All rights reserved.</p>
+      <div class="fb-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms</a>
+        <a href="admin.html">Admin</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="auth.js"></script>
+<script src="dashboard.js"></script>
+</body>
+</html>

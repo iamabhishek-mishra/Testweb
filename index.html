@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Sudha Wellness &mdash; Live Webinar | Holistic Health</title>
+  <meta name="description" content="Join Dr. Ritu Raj Agarwala live on Zoom. Free webinar on gut health, mental clarity and Ayurveda. Get Zoom link instantly on WhatsApp."/>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+<!-- TOP ANNOUNCEMENT BAR -->
+<div class="announce-bar">
+  <span class="announce-dot"></span>
+  <strong>Health &amp; Wellness Awareness Webinar</strong> &nbsp;&bull;&nbsp; 21 July 2026 &nbsp;&bull;&nbsp; 7:00 PM IST &nbsp;&bull;&nbsp;
+  <a href="#register" class="announce-link">Reserve Your Seat &rarr;</a>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="mainNav">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="" alt="Sudha Wellness" class="nav-logo-img"/>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#topics">Agenda</a></li>
+      <li><a href="#speaker">Dr. Ritu Raj</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li id="authNavItem">
+        <a href="login.html" class="nav-login">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          Login
+        </a>
+      </li>
+      <li><a href="#register" class="btn-nav-pill">Register Free</a></li>
+    </ul>
+
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero" id="home">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-inner">
+
+    <!-- Left: Copy -->
+    <div class="hero-copy">
+      <div class="hero-chips">
+        <span class="chip chip-live">
+          <span class="chip-dot"></span> Live Webinar
+        </span>
+        <span class="chip chip-free">Free Registration</span>
+        <span class="chip chip-zoom">Zoom</span>
+      </div>
+
+      <h1 class="hero-h1">
+        Health &amp; Wellness<br/>Awareness <span class="hero-accent">Webinar</span>
+      </h1>
+      <p class="hero-sub">
+        Join <strong>Dr. Ritu Raj Agarwala</strong> for a live session on Fatty Liver, IBS &amp; Gut Health, Kidney Stones and Hypothyroidism &amp; Obesity &mdash; designed to empower you with actionable health knowledge.
+      </p>
+
+      <div class="hero-meta-row">
+        <div class="hm-item">
+          <svg class="hm-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <div><strong>21 July 2026</strong><span>Tuesday</span></div>
+        </div>
+        <div class="hm-item">
+          <svg class="hm-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><strong>7:00 &ndash; 8:30 PM</strong><span>IST</span></div>
+        </div>
+        <div class="hm-item">
+          <svg class="hm-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><polyline points="16 2 12 7 8 2"/></svg>
+          <div><strong>Live on Zoom</strong><span>Link via WhatsApp</span></div>
+        </div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#register" class="btn-hero-primary">
+          Book Now &mdash; Early Bird &#8377;99
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="#about" class="btn-hero-ghost">See What You&rsquo;ll Learn</a>
+      </div>
+
+      <div class="hero-social-proof">
+        <div class="proof-avatars">
+          <span class="av">P</span><span class="av">R</span><span class="av">A</span><span class="av">S</span><span class="av">+</span>
+        </div>
+        <p><strong>2,400+ people</strong> registered this month</p>
+      </div>
+    </div>
+
+    <!-- Right: Webinar Poster -->
+    <div class="hero-right hero-right-poster">
+      <img src="Capture 2.PNG" alt="Health &amp; Wellness Awareness Webinar Poster" class="hero-poster-img"/>
+    </div>
+    <!-- Hidden card for checklist (kept for data) -->
+    <div style="display:none;">
+      <div class="hero-card-hidden">
+        <div class="hcard-header">
+          <span class="hcard-live-dot"></span>
+          <span>Webinar starts in</span>
+        </div>
+        <div class="countdown" id="countdown">
+          <div class="cu"><span id="days">00</span><small>Days</small></div>
+          <div class="cu-sep">:</div>
+          <div class="cu"><span id="hours">00</span><small>Hrs</small></div>
+          <div class="cu-sep">:</div>
+          <div class="cu"><span id="minutes">00</span><small>Min</small></div>
+          <div class="cu-sep">:</div>
+          <div class="cu"><span id="seconds">00</span><small>Sec</small></div>
+        </div>
+        <div class="hcard-divider"></div>
+        <div class="hcard-checklist">
+          <div class="hck">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Fatty Liver Disease &amp; Prevention
+          </div>
+          <div class="hck">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            IBS &amp; Gut Health Masterclass
+          </div>
+          <div class="hck">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Kidney Stones — Causes &amp; Treatment
+          </div>
+          <div class="hck">
+            <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414L8.414 15l-4.121-4.121a1 1 0 011.414-1.414L8.414 12.172l6.879-6.879a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+            Hypothyroidism &amp; Obesity Management
+          </div>
+        </div>
+        <a href="#register" class="btn-hcard">Book My Seat</a>
+        <p class="hcard-note">&#128274; Early Bird &#8377;99 &nbsp;&bull;&nbsp; Regular &#8377;199 from 1 July</p>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item">
+        <span class="trust-num">10,000+</span>
+        <span class="trust-lbl">Patients Treated</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">4.8 &#9733;</span>
+        <span class="trust-lbl">Average Rating</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">50+</span>
+        <span class="trust-lbl">Webinars Conducted</span>
+      </div>
+      <div class="trust-sep"></div>
+      <div class="trust-item">
+        <span class="trust-num">15+ Yrs</span>
+        <span class="trust-lbl">Medical Experience</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU LEARN -->
+<section class="learn-section" id="about">
+  <div class="container">
+    <div class="section-kicker">About the Webinar</div>
+    <h2 class="section-h2">Everything you&rsquo;ll learn in<br/>this 90-minute live session</h2>
+    <p class="section-sub">Dr. Ritu Raj Agarwala breaks down complex medical topics into simple, actionable advice you can start applying today.</p>
+    <div class="learn-grid">
+      <div class="learn-card lc-green">
+        <div class="lc-icon">&#127807;</div>
+        <h3>Gut&ndash;Brain Connection</h3>
+        <p>How gut health drives your mood, focus and energy &mdash; and the 3 foods to avoid immediately.</p>
+        <span class="lc-tag">Nutrition</span>
+      </div>
+      <div class="learn-card lc-blue">
+        <div class="lc-icon">&#129504;</div>
+        <h3>Mental Clarity Protocol</h3>
+        <p>Proven Ayurvedic &amp; modern techniques to clear brain fog and build daily focus rituals.</p>
+        <span class="lc-tag">Mind</span>
+      </div>
+      <div class="learn-card lc-purple">
+        <div class="lc-icon">&#10024;</div>
+        <h3>Spiritual Alignment</h3>
+        <p>Balance your doshas and align your energy for holistic well-being beyond fitness.</p>
+        <span class="lc-tag">Ayurveda</span>
+      </div>
+      <div class="learn-card lc-orange">
+        <div class="lc-icon">&#129367;</div>
+        <h3>Personalised Nutrition</h3>
+        <p>Identify your Prakriti and get an eating pattern blueprint tailored to your body type.</p>
+        <span class="lc-tag">Diet</span>
+      </div>
+      <div class="learn-card lc-teal">
+        <div class="lc-icon">&#128164;</div>
+        <h3>Deep Sleep Formula</h3>
+        <p>Natural sleep protocols that eliminate dependency on supplements or medication.</p>
+        <span class="lc-tag">Recovery</span>
+      </div>
+      <div class="learn-card lc-gold featured-card">
+        <div class="lc-badge">BONUS</div>
+        <div class="lc-icon">&#127873;</div>
+        <h3>Free Resources Worth &#8377;999</h3>
+        <p>Wellness workbook + 7-day detox meal plan + Ayurveda cheat sheet &mdash; yours to keep.</p>
+        <span class="lc-tag">Exclusive</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda-section" id="topics">
+  <div class="container agenda-inner">
+    <div class="agenda-left">
+      <div class="section-kicker">Session Agenda</div>
+      <h2 class="section-h2">What happens<br/>in 90 minutes</h2>
+      <p class="section-sub">A structured, high-value session with zero filler. Every minute is planned for your transformation.</p>
+      <a href="#register" class="btn-agenda-cta">Book My Free Seat</a>
+    </div>
+    <div class="agenda-right">
+      <div class="agenda-item">
+        <div class="ag-time">7:00</div>
+        <div class="ag-connector"><div class="ag-dot"></div><div class="ag-line"></div></div>
+        <div class="ag-content">
+          <h4>Welcome &amp; Introduction</h4>
+          <p>Meet Dr. Ritu Raj Agarwala and understand the health topics we will cover in today's session.</p>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-time">7:10</div>
+        <div class="ag-connector"><div class="ag-dot"></div><div class="ag-line"></div></div>
+        <div class="ag-content">
+          <h4>Fatty Liver Disease</h4>
+          <p>Causes, symptoms and the most effective diet and lifestyle approach to reverse fatty liver.</p>
+          <span class="ag-tag">Topic 1</span>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-time">7:25</div>
+        <div class="ag-connector"><div class="ag-dot"></div><div class="ag-line"></div></div>
+        <div class="ag-content">
+          <h4>IBS &amp; Gut Health</h4>
+          <p>Understanding irritable bowel syndrome and proven strategies to restore a healthy gut.</p>
+          <span class="ag-tag">Topic 2</span>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-time">7:45</div>
+        <div class="ag-connector"><div class="ag-dot"></div><div class="ag-line"></div></div>
+        <div class="ag-content">
+          <h4>Kidney Stones &amp; Hypothyroidism</h4>
+          <p>Prevention strategies for kidney stones and how to manage hypothyroidism and obesity effectively.</p>
+          <span class="ag-tag">Topic 3 &amp; 4</span>
+        </div>
+      </div>
+      <div class="agenda-item">
+        <div class="ag-time">8:10</div>
+        <div class="ag-connector"><div class="ag-dot last"></div></div>
+        <div class="ag-content">
+          <h4>Live Q&amp;A &amp; Closing</h4>
+          <p>Ask Dr. Ritu Raj your personal health questions live and get expert answers before we close.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKER -->
+<section class="speaker-section" id="speaker">
+  <div class="container speaker-inner">
+    <div class="speaker-photo-wrap">
+      <div class="speaker-photo speaker-photo-real">
+        <img src="NEW.png" alt="Dr. Ritu Raj Agarwala" class="doctor-img"/>
+      </div>
+      <div class="speaker-badge-wrap">
+        <div class="sp-badge">&#9733; 4.8 / 5</div>
+        <div class="sp-badge">Homeopathy Expert</div>
+      </div>
+    </div>
+    <div class="speaker-content">
+      <div class="section-kicker">Your Host</div>
+      <h2 class="section-h2">Dr. Ritu Raj Agarwala</h2>
+      <p class="speaker-title">BHMS, MD (Homeopathy) &nbsp;&bull;&nbsp; Wellness Consultant &nbsp;&bull;&nbsp; Health Educator</p>
+      <p class="speaker-bio">Dr. Ritu Raj Agarwala is a leading Homeopathy practitioner with 15+ years of clinical experience. He specializes in Fatty Liver, IBS, Gut Health, Kidney Stones, Thyroid disorders and Obesity management. A passionate health educator, he has conducted 50+ webinars empowering patients to take control of their health through evidence-based holistic treatment.</p>
+      <div class="doctor-action-wrap">
+        <img src="" alt="Dr. Ritu Raj Agarwala conducting webinar" class="doctor-in-action"/>
+      </div>
+      <div class="speaker-pills">
+        <span class="sp-pill">Fatty Liver</span>
+        <span class="sp-pill">IBS &amp; Gut Health</span>
+        <span class="sp-pill">Kidney Stones</span>
+        <span class="sp-pill">Hypothyroidism</span>
+        <span class="sp-pill">Homeopathy</span>
+      </div>
+      <div class="speaker-stats-row">
+        <div class="ss-item"><strong>10K+</strong><span>Patients</span></div>
+        <div class="ss-item"><strong>15+</strong><span>Years</span></div>
+        <div class="ss-item"><strong>50+</strong><span>Webinars</span></div>
+        <div class="ss-item"><strong>BHMS MD</strong><span>Qualified</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="reviews-section" id="testimonials">
+  <div class="container">
+    <div class="section-kicker">Participant Reviews</div>
+    <h2 class="section-h2" style="text-align:center;">Real results from real people</h2>
+    <div class="review-grid">
+      <div class="review-card rc-featured">
+        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rc-text">&ldquo;I lost 8 kgs in 2 months following Dr. Sudha&rsquo;s gut health protocol. My energy is through the roof. This single webinar changed everything.&rdquo;</p>
+        <div class="rc-author">
+          <div class="rc-av" style="background:#e8f5e9;color:#2d7a4f;">P</div>
+          <div>
+            <strong>Priya Mehta</strong>
+            <span>Marketing Manager, Mumbai</span>
+            <span class="rc-verified">&#10003; Verified Attendee</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rc-text">&ldquo;The gut-brain connection module was an absolute eye-opener. I had no idea my diet was affecting my anxiety. Dr. Sudha explains things so simply.&rdquo;</p>
+        <div class="rc-author">
+          <div class="rc-av" style="background:#e3f2fd;color:#1565c0;">R</div>
+          <div>
+            <strong>Rajesh Kumar</strong>
+            <span>Software Engineer, Bangalore</span>
+            <span class="rc-verified">&#10003; Verified Attendee</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rc-text">&ldquo;My chronic fatigue is gone after 3 weeks of following the sleep protocol. I&rsquo;m off my sleep supplements completely. Wish I&rsquo;d found this sooner!&rdquo;</p>
+        <div class="rc-author">
+          <div class="rc-av" style="background:#fce4ec;color:#c62828;">A</div>
+          <div>
+            <strong>Anita Singh</strong>
+            <span>Teacher, Delhi</span>
+            <span class="rc-verified">&#10003; Verified Attendee</span>
+          </div>
+        </div>
+      </div>
+      <div class="review-card">
+        <div class="rc-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="rc-text">&ldquo;I&rsquo;ve attended dozens of health webinars. This is hands down the most practical one. No fluff, just actionable steps I could start immediately.&rdquo;</p>
+        <div class="rc-author">
+          <div class="rc-av" style="background:#fff3e0;color:#e65100;">V</div>
+          <div>
+            <strong>Vivek Sharma</strong>
+            <span>Entrepreneur, Pune</span>
+            <span class="rc-verified">&#10003; Verified Attendee</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRATION -->
+<section class="reg-section" id="register">
+  <div class="container">
+    <div class="reg-wrapper">
+
+      <!-- Left Panel -->
+      <div class="reg-left">
+        <div class="section-kicker reg-kicker">Limited Seats Available</div>
+        <h2 class="section-h2 reg-h2">Book your spot<br/>before price increases</h2>
+
+        <div class="reg-includes">
+          <div class="reg-inc-title">What&rsquo;s included:</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> 2-hour live wellness session with Dr. Sudha</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> Zoom meeting link via WhatsApp instantly</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> Wellness workbook PDF (&#8377;499 value)</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> 7-day Ayurvedic detox meal plan</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> 7-day recording access</div>
+          <div class="ri-item"><span class="ri-check">&#10003;</span> Hypothyroidism &amp; Obesity Management</div>
+        </div>
+
+        <div class="reg-price-block">
+          <span class="rpb-was">Regular &#8377;199</span>
+          <span class="rpb-now">&#8377;99</span>
+          <span class="rpb-note">&#128293; Early Bird &bull; Price rises 1 July 2026</span>
+        </div>
+
+        <div class="reg-seats">
+          <div class="seat-info">
+            <span class="seat-fire">&#128293;</span>
+            <span><strong>Limited seats</strong> available &mdash; book now</span>
+          </div>
+          <div class="seat-track">
+            <div class="seat-fill" style="width:73%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Form -->
+      <div class="reg-right">
+        <div class="reg-form-card">
+          <div class="rfc-header">
+            <h3>Book Your Seat &#8377;99</h3>
+            <p>Zoom link sent to WhatsApp after payment</p>
+          </div>
+
+          <form id="registerForm" onsubmit="handleRegistration(event)" novalidate>
+            <div class="rf-group">
+              <label>Full Name <span class="rf-req">*</span></label>
+              <input type="text" id="fullName" placeholder="e.g. Priya Mehta" required/>
+            </div>
+
+            <div class="rf-group">
+              <label>WhatsApp Number <span class="rf-req">*</span></label>
+              <div class="rf-phone">
+                <span class="rf-code">+91</span>
+                <input type="tel" id="phone" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required/>
+              </div>
+            </div>
+
+            <div class="rf-group">
+              <label>Email Address <span class="rf-req">*</span></label>
+              <input type="email" id="email" placeholder="priya@example.com" required/>
+            </div>
+
+            <div class="rf-group">
+              <label>Primary Health Goal</label>
+              <select id="goal">
+                <option value="">Select your goal</option>
+                <option value="weight">Weight Management</option>
+                <option value="stress">Stress &amp; Anxiety</option>
+                <option value="gut">Gut Health Issues</option>
+                <option value="energy">Low Energy &amp; Fatigue</option>
+                <option value="sleep">Sleep Problems</option>
+                <option value="general">General Wellness</option>
+              </select>
+            </div>
+
+            <!-- Registration Type -->
+            <div class="rf-type-section">
+              <label class="rf-type-label">Registration Type</label>
+              <div class="rf-type-options">
+                <label class="rf-type-opt active" id="opt-free">
+                  <input type="radio" name="regType" value="free" checked onchange="togglePayment('free')"/>
+                  <div class="rfto-inner">
+                    <div class="rfto-left">
+                      <strong>Early Bird &#8377;99</strong>
+                      <small>Full session + Zoom link on WhatsApp</small>
+                    </div>
+                    <span class="rfto-price">FREE</span>
+                  </div>
+                </label>
+                <label class="rf-type-opt" id="opt-paid">
+                  <input type="radio" name="regType" value="paid" onchange="togglePayment('paid')"/>
+                  <div class="rfto-inner">
+                    <div class="rfto-left">
+                      <strong>VIP &#11088; &#8377;199</strong>
+                      <small>Full session + Recording + Priority Q&amp;A</small>
+                    </div>
+                    <span class="rfto-price rfto-paid">&#8377;499</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Payment Methods -->
+            <div id="paymentMethodSection" style="display:none;" class="rf-pay-methods">
+              <label class="rf-type-label">Pay Securely</label>
+              <div class="rf-pay-btns">
+                <button type="button" class="rpb rzp" onclick="payWithRazorpay()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                  Razorpay &mdash; UPI / Card / NetBanking
+                </button>
+                <button type="button" class="rpb ppe" onclick="payWithPhonePe()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/></svg>
+                  PhonePe UPI
+                </button>
+                <button type="button" class="rpb upi" onclick="showUPIQR()">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+                  Scan UPI QR Code
+                </button>
+              </div>
+            </div>
+
+            <!-- UPI QR -->
+            <div id="upiQRSection" style="display:none;" class="rf-upi-box">
+              <p>Scan with any UPI app to pay &#8377;499</p>
+              <div class="rf-qr-img">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi://pay?pa=sudhawellness@okaxis&pn=SudhaWellness&am=499&cu=INR" alt="UPI QR" width="160" height="160"/>
+              </div>
+              <p class="rf-upi-id">UPI ID: <strong>sudhawellness@okaxis</strong></p>
+              <div class="rf-group" style="margin-top:12px">
+                <label>Enter UTR / Transaction ID</label>
+                <input type="text" id="utrId" placeholder="e.g. 426891234567"/>
+              </div>
+              <button type="button" class="btn-upi-confirm" onclick="confirmUPIPayment()">Confirm Payment</button>
+            </div>
+
+            <button type="submit" class="btn-register" id="submitBtn">
+              Pay &#8377;99 &amp; Book Seat
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+            <p class="rf-note">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              256-bit SSL &nbsp;&bull;&nbsp; Zoom link on WhatsApp &nbsp;&bull;&nbsp; Early Bird &#8377;99
+            </p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SUCCESS MODAL -->
+<div class="sw-modal-overlay" id="successModal" style="display:none;">
+  <div class="sw-modal">
+    <button class="sw-modal-x" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div class="swm-icon">&#127881;</div>
+    <h3>You&rsquo;re Registered!</h3>
+    <p id="modalMessage">Your Zoom link has been sent to your WhatsApp number.</p>
+    <div class="swm-details" id="modalDetails"></div>
+    <div class="swm-actions">
+      <a href="dashboard.html" class="btn-swm-primary">View My Dashboard</a>
+      <button onclick="closeModal()" class="btn-swm-ghost">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container faq-inner">
+    <div class="faq-left">
+      <div class="section-kicker">FAQs</div>
+      <h2 class="section-h2">Common questions<br/>answered</h2>
+      <p class="section-sub">Can&rsquo;t find your answer? <a href="mailto:hello@sudhawellness.com" class="faq-contact-link">Email us</a> and we&rsquo;ll reply within 4 hours.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)"><span>How will I get the Zoom link?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">Your Zoom meeting link is sent automatically to your WhatsApp number within 2 minutes of registration. Make sure you enter the correct 10-digit number.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)"><span>What is the registration fee?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">The Early Bird price is &#8377;99 (till 30 June 2026). From 1 July 2026 the price is &#8377;199. VIP includes recording access and priority Q&amp;A at &#8377;199.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)"><span>Will I get a recording?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">VIP registrants get 7-day recording access automatically. Free registrants can upgrade after the session.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)"><span>Is my payment secure?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">All payments are processed via Razorpay and PhonePe with 256-bit SSL encryption. We never store your card details.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFAQ(this)"><span>What if I miss the live session?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-a">VIP members get the full recording. Free attendees can upgrade to access the recording within 24 hours of the live session.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-top">
+    <div class="ft-brand">
+      <div class="ft-logo">
+        <img src="LOGO SW.jpeg" alt="Sudha Wellness" class="ft-logo-img"/>
+      </div>
+      <p class="ft-desc">Empowering patients through Homeopathy, wellness education and evidence-based holistic healthcare. www.sudhawellness.com</p>
+      <div class="ft-socials">
+        <a href="#" class="ft-social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="ft-social-btn" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42A2.78 2.78 0 0020.83 4.7C19.26 4.25 12 4.25 12 4.25s-7.26 0-8.83.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.71 1.72c1.57.45 8.83.45 8.83.45s7.26 0 8.83-.45a2.78 2.78 0 001.71-1.72A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="ft-social-btn" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="ft-col">
+      <h4>Webinar</h4>
+      <a href="#about">About</a>
+      <a href="#topics">Agenda</a>
+      <a href="#speaker">Speaker</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#register">Register Free</a>
+    </div>
+
+    <div class="ft-col">
+      <h4>Account</h4>
+      <a href="login.html">Login</a>
+      <a href="register.html">Create Account</a>
+      <a href="dashboard.html">My Dashboard</a>
+    </div>
+
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <p>&#128231; hello@sudhawellness.com</p>
+      <p>&#128241; +91 98765 43210</p>
+      <p>&#128172; WhatsApp Support</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container fb-inner">
+      <p>&copy; 2025 Sudha Wellness. All rights reserved.</p>
+      <div class="fb-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+<script>
+(function(){
+  var u=JSON.parse(localStorage.getItem('sw_user')||'null');
+  var t=localStorage.getItem('sw_token');
+  if(u&&t){
+    var el=document.getElementById('authNavItem');
+    if(el){
+      var i=(u.firstName||u.name||'U')[0].toUpperCase();
+      var n=u.firstName||(u.name||'').split(' ')[0]||'Account';
+      el.innerHTML='<a href="dashboard.html" class="nav-user-chip"><span class="nav-user-dot">'+i+'</span>'+n+'</a>';
+    }
+  }
+})();
+</script>
+</body>
+</html>

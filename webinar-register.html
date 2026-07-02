@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register for Webinar – Sudha Wellness</title>
+  <meta name="description" content="Register for the Sudha Wellness holistic wellness webinar. Free seat + optional VIP upgrade, Zoom link on WhatsApp, and account login access." />
+  <meta name="theme-color" content="#2d7a4f" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div data-include="header.html"></div>
+
+  <!-- PAGE HEADER -->
+  <section class="hero" style="min-height:auto;padding-top:120px;padding-bottom:40px;">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="badge">🔴 LIVE WEBINAR</span>
+      <h1>Reserve Your Seat for the<br /><span class="highlight">Holistic Wellness Webinar</span></h1>
+      <p class="hero-sub">Fill in your details below to receive the Zoom link instantly on WhatsApp. You can also create a password so you can log in later and see your booking in the dashboard.</p>
+      <div class="hero-meta">
+        <div class="meta-item">📅 <strong>Sunday, 20th July 2025</strong></div>
+        <div class="meta-item">⏰ <strong>6:00 PM – 8:00 PM IST</strong></div>
+        <div class="meta-item">💻 <strong>Live on Zoom</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTRATION SECTION (same form as homepage) -->
+  <section class="register" id="register">
+    <div class="container">
+      <div class="section-tag">Limited Seats</div>
+      <h2>Register for the Webinar</h2>
+      <p class="section-sub">Seats are limited. Secure your spot now and get the Zoom link instantly on WhatsApp!</p>
+
+      <div class="register-wrapper">
+        <div class="register-info">
+          <h3>What you get:</h3>
+          <ul>
+            <li>✅ Live 2-hour wellness session</li>
+            <li>✅ Zoom meeting link via WhatsApp instantly</li>
+            <li>✅ Free wellness workbook (₹499 value)</li>
+            <li>✅ 7-day detox meal plan</li>
+            <li>✅ Recording access for 7 days</li>
+            <li>✅ Certificate of participation</li>
+          </ul>
+          <div class="price-box">
+            <span class="old-price">₹999</span>
+            <span class="new-price">FREE</span>
+            <span class="price-note">Limited time offer</span>
+          </div>
+        </div>
+
+        <div class="register-form-box">
+          <form id="registerForm" onsubmit="handleRegistration(event)">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="fullName" placeholder="Enter your full name" required />
+            </div>
+            <div class="form-group">
+              <label>WhatsApp Number *</label>
+              <div class="phone-input">
+                <span class="country-code">+91</span>
+                <input type="tel" id="phone" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+
+            <!-- Account (optional) -->
+            <div class="account-box">
+              <label class="account-toggle">
+                <input type="checkbox" id="createAccount" checked onchange="toggleAccountFields()" />
+                Create an account so you can login later & view your booking in Dashboard
+              </label>
+              <div id="accountFields">
+                <div class="form-group">
+                  <label>Create Password *</label>
+                  <input type="password" id="regPasswordInline" placeholder="Min. 8 characters" minlength="8" autocomplete="new-password" />
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password *</label>
+                  <input type="password" id="regConfirmInline" placeholder="Re-enter password" minlength="8" autocomplete="new-password" />
+                </div>
+                <p class="form-note" style="margin-top:0;text-align:left;">
+                  Already have an account? <a href="login.html" style="color:var(--green);font-weight:700;text-decoration:none;">Login here</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Your Primary Health Goal</label>
+              <select id="goal">
+                <option value="">Select your goal</option>
+                <option value="weight">Weight Management</option>
+                <option value="stress">Stress & Anxiety</option>
+                <option value="gut">Gut Health Issues</option>
+                <option value="energy">Low Energy & Fatigue</option>
+                <option value="sleep">Sleep Problems</option>
+                <option value="general">General Wellness</option>
+              </select>
+            </div>
+
+            <!-- Payment Selection -->
+            <div class="payment-section">
+              <h4>Choose Registration Type</h4>
+              <div class="payment-options">
+                <label class="payment-option active" id="opt-free">
+                  <input type="radio" name="regType" value="free" checked onchange="togglePayment('free')" />
+                  <div class="opt-content">
+                    <span class="opt-icon">🎁</span>
+                    <div>
+                      <strong>Free Registration</strong>
+                      <small>Basic access + WhatsApp link</small>
+                    </div>
+                    <span class="opt-price">FREE</span>
+                  </div>
+                </label>
+                <label class="payment-option" id="opt-paid">
+                  <input type="radio" name="regType" value="paid" onchange="togglePayment('paid')" />
+                  <div class="opt-content">
+                    <span class="opt-icon">⭐</span>
+                    <div>
+                      <strong>VIP Registration</strong>
+                      <small>All access + 1:1 Q&A slot + Recordings</small>
+                    </div>
+                    <span class="opt-price">₹499</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Payment Method (shown for paid) -->
+            <div class="payment-method-section" id="paymentMethodSection" style="display:none;">
+              <h4>Payment Method</h4>
+              <div class="payment-methods">
+                <button type="button" class="pay-btn razorpay-btn" onclick="payWithRazorpay()">
+                  <img src="https://razorpay.com/favicon.ico" width="18" onerror="this.style.display='none'" />
+                  Razorpay (UPI / Card / NetBanking)
+                </button>
+                <button type="button" class="pay-btn phonepe-btn" onclick="payWithPhonePe()">
+                  <span>📱</span> PhonePe UPI
+                </button>
+                <button type="button" class="pay-btn upi-btn" onclick="showUPIQR()">
+                  <span>₹</span> Scan UPI QR Code
+                </button>
+              </div>
+            </div>
+
+            <!-- UPI QR Section -->
+            <div id="upiQRSection" style="display:none;" class="upi-qr-box">
+              <p>Scan to pay ₹499 via any UPI app</p>
+              <div class="qr-placeholder">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=sudhaWELLNESS@okaxis&pn=SudhaWellness&am=499&cu=INR&tn=WebinarVIP" alt="UPI QR Code" width="180" />
+              </div>
+              <p class="upi-id">UPI ID: <strong>sudhawellness@okaxis</strong></p>
+              <div class="form-group">
+                <label>Enter UTR / Transaction ID after payment</label>
+                <input type="text" id="utrId" placeholder="e.g. 426891234567" />
+              </div>
+              <button type="button" class="btn-primary" onclick="confirmUPIPayment()">Confirm Payment</button>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              🚀 Register & Get WhatsApp Link
+            </button>
+            <p class="form-note">📱 Zoom link will be sent to your WhatsApp within 2 minutes</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="successModal" style="display:none;">
+    <div class="modal-box">
+      <div class="modal-icon">🎉</div>
+      <h3>You're Registered!</h3>
+      <p id="modalMessage">Thank you for registering! Your Zoom meeting link has been sent to your WhatsApp number.</p>
+      <div class="modal-details" id="modalDetails"></div>
+      <button onclick="closeModal()" class="btn-primary">Done</button>
+    </div>
+  </div>
+
+  <div data-include="footer.html"></div>
+
+  <script src="layout.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
+

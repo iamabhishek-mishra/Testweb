@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Admin Panel &mdash; Sudha Wellness</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="auth.css"/>
+  <link rel="stylesheet" href="admin.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+</head>
+<body class="admin-body">
+
+<!-- ADMIN LOGIN SCREEN -->
+<div id="adminLoginScreen" class="admin-login-screen">
+  <div class="admin-login-card">
+    <div class="alc-logo">
+      <img src="LOGO SW.jpeg" alt="Sudha Wellness" style="height:52px;width:auto;background:rgba(255,255,255,.9);border-radius:10px;padding:6px 10px;"/>
+    </div>
+    <h2>Admin Panel</h2>
+    <p>Sudha Wellness &mdash; Staff Access Only</p>
+    <div class="auth-alert auth-alert-error" id="adminLoginError" style="display:none;"></div>
+    <div class="form-group">
+      <label>Admin Email</label>
+      <input type="email" id="adminEmail" placeholder="admin@sudhawellness.com" autocomplete="email"/>
+    </div>
+    <div class="form-group">
+      <label>Admin Password</label>
+      <div class="input-icon-wrap">
+        <span class="input-icon">&#128274;</span>
+        <input type="password" id="adminPassword" placeholder="Enter admin password" autocomplete="current-password"/>
+        <button type="button" class="toggle-pass" onclick="togglePassword('adminPassword',this)">&#128065;</button>
+      </div>
+    </div>
+    <button class="btn-auth" onclick="adminLogin()" id="adminLoginBtn">Sign In to Admin</button>
+    <p class="demo-hint"><strong>Demo:</strong> admin@sudhawellness.com &nbsp;/&nbsp; admin2025</p>
+  </div>
+</div>
+
+<!-- ADMIN DASHBOARD (hidden until login) -->
+<div id="adminDashboard" style="display:none;">
+
+  <!-- NAVBAR -->
+  <nav class="admin-navbar">
+    <div class="nav-wrap">
+      <div class="nav-logo" style="display:flex;align-items:center;gap:12px;">
+        <img src="LOGO SW.jpeg" alt="Sudha Wellness" class="nav-logo-img"/>
+        <span style="color:#f87171;font-size:.72rem;font-weight:700;letter-spacing:.5px;">ADMIN PANEL</span>
+      </div>
+      <div class="admin-nav-right">
+        <span class="admin-nav-badge">&#128272; Admin</span>
+        <button class="admin-logout-btn" onclick="adminLogout()">&#128682; Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ADMIN LAYOUT -->
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar">
+      <nav class="sidebar-nav">
+        <a href="#" class="sidebar-link active" data-tab="adm-overview" onclick="return adminTab('adm-overview',this)"><span>&#128200;</span> Overview</a>
+        <a href="#" class="sidebar-link" data-tab="adm-registrations" onclick="return adminTab('adm-registrations',this)"><span>&#127915;</span> Registrations<span class="sidebar-count" id="admRegCount"></span></a>
+        <a href="#" class="sidebar-link" data-tab="adm-users" onclick="return adminTab('adm-users',this)"><span>&#128101;</span> Users<span class="sidebar-count" id="admUserCount"></span></a>
+        <a href="#" class="sidebar-link" data-tab="adm-payments" onclick="return adminTab('adm-payments',this)"><span>&#128179;</span> Payments</a>
+        <a href="#" class="sidebar-link" data-tab="adm-whatsapp" onclick="return adminTab('adm-whatsapp',this)"><span>&#128172;</span> WhatsApp Blast</a>
+        <a href="#" class="sidebar-link" data-tab="adm-settings" onclick="return adminTab('adm-settings',this)"><span>&#9881;</span> Settings</a>
+        <hr class="sidebar-divider"/>
+        <a href="index.html" class="sidebar-link" target="_blank"><span>&#127968;</span> View Website</a>
+      </nav>
+    </aside>
+
+    <!-- ADMIN CONTENT -->
+    <main class="admin-content">
+      <div id="admToast" class="dash-toast" aria-live="polite"></div>
+
+      <!-- ===== OVERVIEW ===== -->
+      <div class="tab-panel active" id="tab-adm-overview">
+        <div class="dash-header">
+          <div><h1>Dashboard &#128200;</h1><p class="dash-subtext">Live overview of all webinar registrations</p></div>
+          <div style="display:flex;gap:10px;">
+            <button class="adm-btn-secondary" onclick="exportCSV()">&#8595; Export CSV</button>
+            <button class="adm-btn-primary" onclick="loadAll()">&#8635; Refresh</button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#eaf5ef;color:#1a6b45;">&#127915;</div>
+            <div><div class="stat-card-num" id="adm-totalReg">0</div><div class="stat-card-label">Total Registrations</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#faf5ff;color:#7c3aed;">&#11088;</div>
+            <div><div class="stat-card-num" id="adm-vipReg">0</div><div class="stat-card-label">VIP Registrations</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#eff6ff;color:#2563eb;">&#128179;</div>
+            <div><div class="stat-card-num" id="adm-revenue">&#8377;0</div><div class="stat-card-label">Total Revenue</div></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-icon" style="background:#fef3c7;color:#d97706;">&#128101;</div>
+            <div><div class="stat-card-num" id="adm-users">0</div><div class="stat-card-label">Total Users</div></div>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="section-card">
+          <div class="section-card-header">
+            <h3>Recent Registrations</h3>
+            <a href="#" onclick="return adminTab('adm-registrations')">View all &rarr;</a>
+          </div>
+          <div id="adm-recentList"></div>
+        </div>
+      </div>
+
+      <!-- ===== REGISTRATIONS ===== -->
+      <div class="tab-panel" id="tab-adm-registrations">
+        <div class="dash-header">
+          <div><h1>All Registrations &#127915;</h1><p class="dash-subtext">Every webinar registration in the system</p></div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <input type="text" id="regSearch" placeholder="&#128269; Search name, email, phone..." class="adm-search" oninput="filterRegistrations()"/>
+            <select id="regTypeFilter" class="adm-select" onchange="filterRegistrations()">
+              <option value="">All Types</option>
+              <option value="VIP">VIP Only</option>
+              <option value="FREE">Free Only</option>
+            </select>
+            <button class="adm-btn-secondary" onclick="exportCSV()">&#8595; Export CSV</button>
+          </div>
+        </div>
+        <div class="section-card">
+          <div id="adm-regTable"></div>
+        </div>
+      </div>
+
+      <!-- ===== USERS ===== -->
+      <div class="tab-panel" id="tab-adm-users">
+        <div class="dash-header">
+          <div><h1>All Users &#128101;</h1><p class="dash-subtext">Registered accounts on the platform</p></div>
+          <input type="text" id="userSearch" placeholder="&#128269; Search users..." class="adm-search" oninput="filterUsers()"/>
+        </div>
+        <div class="section-card">
+          <div id="adm-userTable"></div>
+        </div>
+      </div>
+
+      <!-- ===== PAYMENTS ===== -->
+      <div class="tab-panel" id="tab-adm-payments">
+        <div class="dash-header">
+          <div><h1>Payment Records &#128179;</h1><p class="dash-subtext">All paid transactions</p></div>
+        </div>
+        <div class="payments-summary">
+          <div class="pay-summary-item"><span>Total Revenue</span><strong id="adm-payTotal">&#8377;0</strong></div>
+          <div class="pay-summary-item"><span>Paid Transactions</span><strong id="adm-payCount">0</strong></div>
+          <div class="pay-summary-item"><span>Avg. Order Value</span><strong id="adm-payAvg">&#8377;0</strong></div>
+        </div>
+        <div class="section-card">
+          <div id="adm-payTable"></div>
+        </div>
+      </div>
+
+      <!-- ===== WHATSAPP BLAST ===== -->
+      <div class="tab-panel" id="tab-adm-whatsapp">
+        <div class="dash-header">
+          <div><h1>WhatsApp Blast &#128172;</h1><p class="dash-subtext">Send bulk messages to registered participants</p></div>
+        </div>
+        <div class="adm-whatsapp-layout">
+          <div class="section-card" style="flex:1;">
+            <div class="section-card-header"><h3>Compose Message</h3></div>
+            <div class="form-group">
+              <label>Target Audience</label>
+              <select id="waTarget">
+                <option value="all">All Registrants</option>
+                <option value="vip">VIP Only</option>
+                <option value="free">Free Only</option>
+                <option value="upcoming">Upcoming Webinar Only</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message Template</label>
+              <select id="waTemplate" onchange="loadTemplate()">
+                <option value="reminder">Webinar Reminder (1 day before)</option>
+                <option value="zoom">Zoom Link Resend</option>
+                <option value="custom">Custom Message</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea id="waMessage" rows="8" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;font-size:.88rem;resize:vertical;"></textarea>
+            </div>
+            <div class="form-group">
+              <label>Recipients Preview</label>
+              <div id="waRecipCount" style="padding:10px 14px;background:var(--bg);border-radius:9px;font-size:.85rem;color:var(--muted);">Select audience above</div>
+            </div>
+            <button class="adm-btn-primary" onclick="sendWhatsAppBlast()" style="width:100%;">&#128172; Send WhatsApp Blast</button>
+          </div>
+          <div class="section-card" style="flex:0 0 320px;">
+            <div class="section-card-header"><h3>Message Preview</h3></div>
+            <div class="wa-preview-bubble" id="waPreview">
+              Your message will appear here...
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SETTINGS ===== -->
+      <div class="tab-panel" id="tab-adm-settings">
+        <div class="dash-header">
+          <div><h1>Settings &#9881;</h1><p class="dash-subtext">Manage webinar and system settings</p></div>
+        </div>
+        <div class="adm-settings-grid">
+          <div class="section-card">
+            <div class="section-card-header"><h3>Webinar Details</h3></div>
+            <form id="webinarSettingsForm" onsubmit="saveWebinarSettings(event)">
+              <div class="form-group"><label>Webinar Title</label><input type="text" id="set-title" value="Holistic Wellness &ndash; Live Webinar"/></div>
+              <div class="form-group"><label>Date &amp; Time</label><input type="datetime-local" id="set-datetime" value="2025-07-20T18:00"/></div>
+              <div class="form-group"><label>Zoom Meeting Link</label><input type="url" id="set-zoomlink" placeholder="https://zoom.us/j/..."/></div>
+              <div class="form-group"><label>Zoom Meeting ID</label><input type="text" id="set-zoomid" placeholder="123 456 7890"/></div>
+              <div class="form-group"><label>Zoom Password</label><input type="text" id="set-zoompwd" placeholder="wellness"/></div>
+              <div class="form-group"><label>VIP Price (&#8377;)</label><input type="number" id="set-price" value="499"/></div>
+              <div class="form-group"><label>Total Seats</label><input type="number" id="set-seats" value="100"/></div>
+              <button type="submit" class="adm-btn-primary">Save Settings</button>
+            </form>
+          </div>
+          <div class="section-card">
+            <div class="section-card-header"><h3>API Configuration</h3></div>
+            <div class="form-group"><label>Razorpay Key ID</label><input type="text" id="set-rzpkey" placeholder="rzp_live_..."/></div>
+            <div class="form-group"><label>PhonePe Merchant ID</label><input type="text" id="set-phonepe" placeholder="MERCHANT..."/></div>
+            <div class="form-group"><label>WhatsApp Provider</label>
+              <select id="set-waprovider">
+                <option value="twilio">Twilio</option>
+                <option value="meta">Meta Cloud API</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Twilio / Meta Token (masked)</label><input type="password" id="set-watoken" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"/></div>
+            <button class="adm-btn-primary" onclick="saveAPISettings()">Save API Config</button>
+            <div style="margin-top:16px;">
+              <div class="section-card-header"><h3>Database</h3></div>
+              <div class="form-group"><label>MongoDB URI</label><input type="password" id="set-mongoUri" placeholder="mongodb+srv://..."/></div>
+              <button class="adm-btn-primary" onclick="testDBConnection()">Test Connection</button>
+              <div id="dbConnStatus" style="margin-top:10px;font-size:.82rem;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

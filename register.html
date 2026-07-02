@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Create Account &mdash; Sudha Wellness</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="auth.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet"/>
+</head>
+<body class="auth-body">
+
+<nav class="navbar">
+  <div class="nav-wrap">
+    <a href="index.html" class="nav-logo">
+      <img src="LOGO SW.jpeg" alt="Sudha Wellness" class="nav-logo-img"/>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="index.html#register" class="btn-nav-pill">Register Webinar</a></li>
+    </ul>
+    <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<main class="auth-main">
+  <div class="auth-left">
+    <div class="auth-left-content">
+      <div class="auth-brand">
+        <img src="LOGO SW.jpeg" alt="Sudha Wellness" class="auth-logo-img"/>
+      </div>
+      <h2>Join thousands on their<br/><span class="auth-highlight">wellness journey</span></h2>
+      <p>Create your free account to register for webinars, track your bookings, and access exclusive wellness resources.</p>
+      <div class="auth-features">
+        <div class="auth-feat-item">&#9989; Free webinar registration</div>
+        <div class="auth-feat-item">&#128241; Instant WhatsApp Zoom link</div>
+        <div class="auth-feat-item">&#128203; Track all your bookings</div>
+        <div class="auth-feat-item">&#127873; Exclusive member resources</div>
+      </div>
+      <div class="auth-testimonial">
+        <div class="auth-test-text">&ldquo;Registering was so simple! Got my Zoom link on WhatsApp within seconds.&rdquo;</div>
+        <div class="auth-test-author">
+          <div class="auth-avatar">P</div>
+          <div><strong>Priya Mehta</strong><span>Mumbai</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-right">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <h1>Create Account</h1>
+        <p>Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+      <div class="auth-alert auth-alert-error" id="errorBanner" style="display:none;"></div>
+      <div class="auth-alert auth-alert-success" id="successBanner" style="display:none;"></div>
+
+      <form id="signupForm" onsubmit="handleSignup(event)" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" id="firstName" placeholder="Priya" required autocomplete="given-name"/>
+            <span class="field-error" id="err-firstName"></span>
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" id="lastName" placeholder="Mehta" required autocomplete="family-name"/>
+            <span class="field-error" id="err-lastName"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">&#9993;</span>
+            <input type="email" id="regEmail" placeholder="priya@example.com" required autocomplete="email"/>
+          </div>
+          <span class="field-error" id="err-regEmail"></span>
+        </div>
+        <div class="form-group">
+          <label>WhatsApp Number *</label>
+          <div class="phone-input">
+            <span class="country-code">+91</span>
+            <input type="tel" id="regPhone" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required autocomplete="tel"/>
+          </div>
+          <span class="field-error" id="err-regPhone"></span>
+        </div>
+        <div class="form-group">
+          <label>Password *</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">&#128274;</span>
+            <input type="password" id="regPassword" placeholder="Min. 8 characters" required autocomplete="new-password"/>
+            <button type="button" class="toggle-pass" onclick="togglePassword('regPassword',this)">&#128065;</button>
+          </div>
+          <div class="password-strength" id="passStrength" style="display:none;">
+            <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+            <span id="strengthText"></span>
+          </div>
+          <span class="field-error" id="err-regPassword"></span>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password *</label>
+          <div class="input-icon-wrap">
+            <span class="input-icon">&#128274;</span>
+            <input type="password" id="regConfirm" placeholder="Re-enter password" required autocomplete="new-password"/>
+            <button type="button" class="toggle-pass" onclick="togglePassword('regConfirm',this)">&#128065;</button>
+          </div>
+          <span class="field-error" id="err-regConfirm"></span>
+        </div>
+        <div class="form-group">
+          <label>City</label>
+          <input type="text" id="regCity" placeholder="Mumbai" autocomplete="address-level2"/>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" id="agreeTerms" required/>
+          <label for="agreeTerms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+        </div>
+        <span class="field-error" id="err-agreeTerms"></span>
+        <div class="form-check">
+          <input type="checkbox" id="whatsappConsent" checked/>
+          <label for="whatsappConsent">Send me webinar updates &amp; Zoom links on WhatsApp &#128241;</label>
+        </div>
+        <button type="submit" class="btn-auth" id="signupBtn">
+          <span id="signupBtnText">Create My Account</span>
+          <span id="signupBtnLoader" style="display:none;">&#9203; Creating account...</span>
+        </button>
+        <div class="auth-divider"><span>or</span></div>
+        <div class="social-auth">
+          <button type="button" class="social-btn google-btn" onclick="socialAuth('google')">
+            <svg width="16" height="16" viewBox="0 0 18 18"><path fill="#4285F4" d="M16.51 8H8.98v3h4.3c-.18 1-.74 1.48-1.6 2.04v2.01h2.6a7.8 7.8 0 002.38-5.88c0-.57-.05-.66-.15-1.18z"/><path fill="#34A853" d="M8.98 17c2.16 0 3.97-.72 5.3-1.94l-2.6-2a4.8 4.8 0 01-7.18-2.54H1.83v2.07A8 8 0 008.98 17z"/><path fill="#FBBC05" d="M4.5 10.52a4.8 4.8 0 010-3.04V5.41H1.83a8 8 0 000 7.18l2.67-2.07z"/><path fill="#EA4335" d="M8.98 4.18c1.17 0 2.23.4 3.06 1.2l2.3-2.3A8 8 0 001.83 5.4L4.5 7.49a4.77 4.77 0 014.48-3.31z"/></svg>
+            Continue with Google
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+
+<script src="auth.js"></script>
+</body>
+</html>
